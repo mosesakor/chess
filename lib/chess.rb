@@ -1,6 +1,9 @@
 require_relative './player'
 require_relative './board'
-require_relative './test_script'
+require_relative './rook'
+require_relative './bishop'
+require_relative './queen'
+#require_relative './test_script'
 
 class Game
 
@@ -37,21 +40,17 @@ class Game
   end
 
   def test_board
-    board.grid[1][3] = Pawn.new([1,3], current_player)
-    board.grid[2][2] = Pawn.new([2,2], other_player)
-    board.grid[2][4] = Pawn.new([2,4], other_player)
-    
-    board.grid[6][1] = Knight.new([6,1], other_player)
-    board.grid[5][3] = Pawn.new([5,3], other_player)
+
+    board.grid[4][4] = Queen.new([4,4], current_player)
   end
 
   def test_pawn
-    board.grid[1][3].available_moves(board.grid)
-    board.grid[6][1].available_moves(board.grid)
+    #board.grid[1][3].available_moves(board.grid)
+    board.grid[4][4].available_moves(board.grid)
   end
 
   def display_board
-    board
+    #board.grid[6][3]
   end
 
   def change_turn
@@ -62,7 +61,7 @@ end
 players = []
 player1 = Player.new({name: 'moe', color: 'black'})
 player2 = Player.new({name: 'rita', color: 'white'})
-players <<  player1
+players << player1
 players << player2
 
 test = Game.new(players)
